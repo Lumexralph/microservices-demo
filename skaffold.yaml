@@ -24,18 +24,46 @@ build:
   # https://skaffold.dev/docs/concepts/#image-repository-handling
   - image: emailservice
     context: src/emailservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
+      env:
+      - GOOGLE_RUNTIME_VERSION=3.7.0
+      - PYTHONUNBUFFERED=1
+      - ENABLE_PROFILER=1
   - image: productcatalogservice
     context: src/productcatalogservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
+      env:
+      - GOTRACEBACK=single
   - image: recommendationservice
     context: src/recommendationservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
+      env:
+      - PORT=8080
+      - GOOGLE_RUNTIME_VERSION=3.7.0
   - image: shippingservice
     context: src/shippingservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
+      env:
+      - APP_PORT=50051
+      - GOTRACEBACK=single
   - image: checkoutservice
     context: src/checkoutservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
+      env:
+      - GOTRACEBACK=single
   - image: paymentservice
     context: src/paymentservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
   - image: currencyservice
     context: src/currencyservice
+    buildpacks:
+      builder: "gcr.io/buildpacks/builder:v1"
   - image: cartservice
     context: src/cartservice/src
     docker:
