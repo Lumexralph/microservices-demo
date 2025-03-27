@@ -16,12 +16,21 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - base
+
+# Set the namespace for ALL resources
+namespace: hipster-shop  # Replace with your desired namespace
+
+# Optional: Add common labels/annotations to all resources
+labels:
+  - pairs:
+      app: frontend
+
 components:
 # - components/cymbal-branding
 # - components/google-cloud-operations
 # - components/memorystore
 # - components/network-policies
-# - components/non-public-frontend
+ - components/non-public-frontend
 # - components/service-accounts
 # - components/alloydb
 # - components/single-shared-session

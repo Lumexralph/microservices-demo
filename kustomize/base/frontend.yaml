@@ -123,6 +123,22 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: frontend-external-local  # NodePort (external access)
+  labels:
+    app: frontend
+spec:
+  type: NodePort           # Exposes on a static port (30000-32767)
+  selector:
+    app: frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      nodePort: 30080      # Optional: Manually assign a port (default: random)
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: frontend-external
   labels:
     app: frontend
