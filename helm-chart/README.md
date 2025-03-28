@@ -7,7 +7,9 @@ If you'd like to deploy Online Boutique via its Helm chart, you could leverage t
 Deploy the default setup of Online Boutique:
 ```sh
 helm upgrade onlineboutique oci://us-docker.pkg.dev/online-boutique-ci/charts/onlineboutique \
-    --install
+    --install \
+    --create-namespace \
+    -n hipster-shop
 ```
 
 Deploy advanced scenario of Online Boutique:
